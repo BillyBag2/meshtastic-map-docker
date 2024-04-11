@@ -4,7 +4,7 @@
 
 http: // github.com / [mddeff](https://github.com/mddeff) / [meshtastic-map](https://github.com/mddeff/meshtastic-map)
 
-# Submodule containing meshtasic-map by liamcottle
+# Submodule containing meshtastic-map by liamcottle
 
 http: // github.com / [liamcottle](https://github.com/liamcottle) / [meshtastic-map](https://github.com/liamcottle/meshtastic-map)
 
@@ -41,3 +41,6 @@ or fetched.
 This deploys two containers using `docker compose`. One is the map server and
 mqtt fetcher. The other takes care of the database.
 
+# Wish list
+
+Launch components separately so they can be developed leaving other components running.

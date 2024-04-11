@@ -1,0 +1,4 @@
+[submodule "docker/meshtastic-map"]
+	path = docker/meshtastic-map
+	url = https://github.com/liamcottle/meshtastic-map.git
+	branch = master

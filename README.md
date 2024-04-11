@@ -15,11 +15,6 @@ It rejigs mddeff's docker project to use submodules.
 Having meshtastic-map in submodules will both pin the version used to a fixed commit, and also provide a mechanism to pull the latest version or work on branches or forks. By default you get a version pinned to a specified commit
 that is designed to work with this project.
 
-# TODO
-
-At time of writing the submodule containing the map server was not initialized
-or fetched.
-
 # Prerequisites
 
 * docker engine/cli tools.
@@ -32,6 +27,8 @@ or fetched.
 ./build_image.sh
 ```
 
+First time this runs it will create an SQL password and with pull the meshtastic-map submodule.
+
 # Deploy two containers
 
 ```
@@ -40,6 +37,18 @@ or fetched.
 
 This deploys two containers using `docker compose`. One is the map server and
 mqtt fetcher. The other takes care of the database.
+
+# Getting the latest meshtastic-map version.
+
+If you understand submodules then the latest on main can be synced.
+However the easiest way to get started with submodules do the task that pulls the pinned commit and then go to that directory and use commands such as.
+
+```
+git checkout main
+git pull
+```
+
+A general rule of thumb is do not `git add` the submodule directory so changes to the pinned commit are not committed. Unless you want to permanently move the pinned commit.
 
 # Wish list
 

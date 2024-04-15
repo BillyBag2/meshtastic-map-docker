@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  meshtastic-map:
+    container_name: development-meshtastic-map
+    restart: always
+    image: billybag2/meshtastic-map
+    # Enables the web UI and tells Traefik to listen to docker
+    # command:
+    #   - node 
+    environment:
+      - DATABASE_URL=mysql://root:${MARIADB_ROOT_PASSWORD}@meshmap-db:3306/meshtastic-map?connection_limit=100
+      - MQTT_BROKER_URL=mqtt://mqtt.meshtastic.org
+      - MQTT_USERNAME=meshdev
+      - MQTT_PASSWORD=large4cats
+      - ADDITIONAL_MQTT_OPTION=""
+    volumes:
+      - ./meshtastic-map:/app
+    ports:
+      # The HTTP port
+      - "8081:8080"
+    networks:
+      - development_meshtastic_map
+    depends_on:
+      meshmap-db:
+        condition: service_healthy
+
+
+  meshmap-db:
+    container_name: development-meshtastic-map-db
+    image: bitnami/mariadb:latest
+    env_file:
+      - sql.env
+    restart: always
+    volumes:
+      - development-dbdata:/var/lib/mysql
+    networks:
+      - development_meshtastic_map
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+volumes:
+  development-dbdata:
+    driver: local
+
+networks:
+  development_meshtastic_map:

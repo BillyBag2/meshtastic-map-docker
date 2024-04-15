@@ -1,12 +1,13 @@
 FROM node:21-alpine3.18 as base
-WORKDIR /app
+WORKDIR /scripts
 COPY deploy.sh deploy.sh
 COPY web.sh web.sh
 COPY mqtt.sh mqtt.sh
 COPY migrate.sh migrate.sh
 COPY meshtastic-map/ /app/
+WORKDIR /app
 RUN npm install
 EXPOSE 8080
 
 FROM base as deploy
-CMD [ "/app/deploy.sh" ]
+CMD [ "/scripts/deploy.sh" ]

@@ -19,6 +19,7 @@ services:
     ports:
       # The HTTP port
       - "8081:8080"
+      - "5555:5555"
     networks:
       - development_meshtastic_map
     depends_on:

@@ -2,3 +2,7 @@
 	path = docker/meshtastic-map
 	url = https://github.com/liamcottle/meshtastic-map.git
 	branch = master
+[submodule "development/billybag2/meshtastic-map"]
+	path = development/billybag2/meshtastic-map
+	url = https://github.com/BillyBag2/meshtastic-map.git
+	branch = master
